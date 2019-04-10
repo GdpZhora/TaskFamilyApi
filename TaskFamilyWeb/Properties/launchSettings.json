@@ -1,11 +1,10 @@
 ﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:54025",
-      "sslPort": 0
+      "applicationUrl": "http://localhost:50671",
+      "sslPort": 44301
     }
   },
   "profiles": {
@@ -16,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TaskFamilyApi": {
+    "TaskFamilyWeb": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
