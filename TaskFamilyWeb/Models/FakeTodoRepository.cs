@@ -9,7 +9,10 @@ namespace TaskFamilyWeb.Models
     {
         public IEnumerable<ToDo> ToDos => new List<ToDo>
         {
-            new ToDo{Id =1, Description = "Задача номер 1"}
+            new ToDo{Id =1, Description = "Релизовать вывод всех задач"},
+            new ToDo{Id =2, Description = "Подключить Bootstrap библиотеки к страничке"},
+            new ToDo{Id =3, Description = "Доработать контроллер на изменение задач"}
+
         };
     }
 }

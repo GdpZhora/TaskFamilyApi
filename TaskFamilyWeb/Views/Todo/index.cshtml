@@ -11,9 +11,16 @@
     <title>View</title>
 </head>
 <body>
-    @foreach (ToDo TodoTask in Model)
-    {
-        @TodoTask.Description
-    }
+    <table>
+        <thead>
+            <tr><th>Описание задачи</th></tr>
+        </thead>
+        <tbody>
+            @foreach (ToDo TodoTask in Model)
+            {
+            <tr><td>@TodoTask.Description </td></tr>
+            }
+            </tbody>
+</table>
 </body>
 </html>
