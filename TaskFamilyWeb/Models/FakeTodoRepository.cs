@@ -9,7 +9,7 @@ namespace TaskFamilyWeb.Models
     {
         public IEnumerable<ToDo> ToDos => new List<ToDo>
         {
-            new ToDo{Id =1}
+            new ToDo{Id =1, Description = "Задача номер 1"}
         };
     }
 }

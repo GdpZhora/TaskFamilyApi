@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace TaskFamilyWeb.Models
 {
-    public class ITodoRepository
+    public interface ITodoRepository
     {
         IEnumerable<ToDo> ToDos { get; }
     }

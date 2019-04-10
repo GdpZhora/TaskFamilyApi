@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<ToDo>
 @{
     Layout = null;
 }
@@ -11,5 +11,9 @@
     <title>View</title>
 </head>
 <body>
+    @foreach (ToDo TodoTask in Model)
+    {
+        @TodoTask.Description
+    }
 </body>
 </html>
