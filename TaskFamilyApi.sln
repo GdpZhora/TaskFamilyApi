@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFamilyWeb", "TaskFamilyWeb\TaskFamilyWeb.csproj", "{7E0F793A-A919-4D95-9C3A-8D3959A33185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFamilyModels", "ClassLibModel\TaskFamilyModels.csproj", "{316615A4-1F2E-48DA-8129-A1874D490DFA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskFamilyModels", "ClassLibModel\TaskFamilyModels.csproj", "{316615A4-1F2E-48DA-8129-A1874D490DFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskFamilyWeb.Tests", "TaskFamilyWeb.Tests\TaskFamilyWeb.Tests.csproj", "{FAED2A8C-4319-430B-8EC3-6260431BD129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{316615A4-1F2E-48DA-8129-A1874D490DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{316615A4-1F2E-48DA-8129-A1874D490DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{316615A4-1F2E-48DA-8129-A1874D490DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAED2A8C-4319-430B-8EC3-6260431BD129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAED2A8C-4319-430B-8EC3-6260431BD129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAED2A8C-4319-430B-8EC3-6260431BD129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAED2A8C-4319-430B-8EC3-6260431BD129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

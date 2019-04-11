@@ -28,6 +28,8 @@ namespace TaskFamilyWeb
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseMvc(routes =>
            routes.MapRoute(
                name: null,
