@@ -16,7 +16,7 @@ namespace TaskFamilyWeb.Controllers
             todo = repository;
         }
 
-        public ViewResult Index()
+        public ViewResult List()
         {
             return View(todo.ToDos);
         }

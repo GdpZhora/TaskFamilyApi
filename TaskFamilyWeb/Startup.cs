@@ -31,13 +31,22 @@ namespace TaskFamilyWeb
             app.UseStaticFiles();
 
             app.UseMvc(routes =>
-           routes.MapRoute(
+           {
+               routes.MapRoute(
                name: null,
                template: "",
-               defaults: new { Controller = "Todo", action = "index" }
+               defaults: new { Controller = "Main", action = "index" });
 
-            )
-            );
+               routes.MapRoute(
+               name: null,
+               template: "/index",
+               defaults: new { Controller = "Main", action = "index" });
+
+               routes.MapRoute(
+               name: null,
+               template: "/todo",
+               defaults: new { Controller = "Todo", action = "List" });
+           });
         }
     }
 }
