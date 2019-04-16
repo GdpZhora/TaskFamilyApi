@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace TaskFamilyWeb.Models
 {
-    interface IBudjet
+    public interface IBudget
     {
-        IEnumerable<Purse> Purses { get;  }
+        IDictionary<Purse, decimal> Purses { get; }
 
         IEnumerable<MoveMoney> Moves { get; }
 

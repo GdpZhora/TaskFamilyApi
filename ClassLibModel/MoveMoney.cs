@@ -7,6 +7,7 @@ namespace TaskFamilyWeb.Models
     public class MoveMoney
     {
         public Purse PurseMoney { get; set; }
+        public DateTime Date { get; set; }
         public DirectMove InMove { get; set; }
         public string Comment { get; set;}
         public decimal Total { get; set; }

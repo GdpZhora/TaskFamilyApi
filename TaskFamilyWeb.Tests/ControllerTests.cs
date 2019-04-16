@@ -25,7 +25,7 @@ namespace TaskFamilyWeb.Tests
 
             TodoController controller = new TodoController(mock.Object);
 
-            IEnumerable<ToDo> result = controller.Index().ViewData.Model as IEnumerable<ToDo>;
+            IEnumerable<ToDo> result = controller.List().ViewData.Model as IEnumerable<ToDo>;
 
             ToDo[] toDos = result.ToArray();
             Assert.True(toDos.Length == 4);
