@@ -7,27 +7,31 @@ namespace TaskFamilyWeb.Models
 {
     public class FakeBudget : IBudget
     {
-        public IDictionary<Purse, decimal> Purses
+        public IEnumerable<Purse> Purses => new List<Purse>
         {
-            get
-            {
-                IDictionary<Purse, decimal> valuePairs = new Dictionary<Purse, decimal>();
-
-                IEnumerable<MoveMoney> moves = Moves;
-                //Moves.GroupBy()
-
-                return valuePairs;
-
-            }
-        }
+            new Purse { Id = 1, Description = "Наличные деньги" },
+            new Purse { Id = 2, Description = "Зарплатная карта" },
+            new Purse { Id = 3, Description = "Кредитная карта" }
+        };
 
 
 
         public IEnumerable<MoveMoney> Moves {
 
             get {
-                Purse cash = new Purse { Id = 1, Description = "Наличные деньги" };
-                Purse salaryCard = new Purse { Id = 2, Description = "Зарплатная карта" };
+                Purse cash = new Purse();
+                Purse salaryCard = cash;
+                foreach (Purse purse in Purses)
+                {
+                    if (purse.Id == 1)
+                    {
+                        cash = purse;
+                    }
+                    else if(purse.Id == 2 )
+                    {
+                        salaryCard = purse;
+                    }
+                }
                 IEnumerable<MoveMoney> moves = new List<MoveMoney>
                 {
                     new MoveMoney { PurseMoney = salaryCard, InMove = DirectMove.incoming, Total = 100000},

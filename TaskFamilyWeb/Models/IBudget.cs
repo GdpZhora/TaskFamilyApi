@@ -7,7 +7,7 @@ namespace TaskFamilyWeb.Models
 {
     public interface IBudget
     {
-        IDictionary<Purse, decimal> Purses { get; }
+        IEnumerable<Purse> Purses { get; }
 
         IEnumerable<MoveMoney> Moves { get; }
 
