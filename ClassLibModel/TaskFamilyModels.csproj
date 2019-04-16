@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>TaskFamilyModels</AssemblyName>
+    <RootNamespace>TaskFamilyWeb.Models</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
