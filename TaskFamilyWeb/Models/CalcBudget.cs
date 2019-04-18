@@ -14,7 +14,15 @@ namespace TaskFamilyWeb.Models
             this.budget = budget;
         }
 
-       // public 
+        public decimal TotalBalance(DateTime dateTime)
+        {
 
+            return budget.Moves.Sum(m => m.Total);
+        }
+
+        public decimal BalancePurse(Purse purse, DateTime dateTime )
+        {
+            return 0;
+        }
     }
 }
