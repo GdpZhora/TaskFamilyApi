@@ -17,6 +17,7 @@ namespace TaskFamilyWeb
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ITodoRepository, FakeTodoRepository>();
+            services.AddTransient<IBudget, FakeBudget>();
             services.AddMvc();
         }
 
@@ -46,6 +47,12 @@ namespace TaskFamilyWeb
                name: null,
                template: "/todo",
                defaults: new { Controller = "Todo", action = "List" });
+
+               routes.MapRoute(
+               name: null,
+               template: "/budget",
+               defaults: new { Controller = "Budget", action = "List" });
+
            });
         }
     }

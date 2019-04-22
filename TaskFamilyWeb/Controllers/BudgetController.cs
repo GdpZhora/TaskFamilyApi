@@ -16,9 +16,19 @@ namespace TaskFamilyWeb.Controllers
             budget = budgetOut;
         }
 
-        public IActionResult Index()
+        public ViewResult List()
         {
-            return View(budget.Purses);
+            Dictionary<Purse, decimal> keyValues = new Dictionary<Purse, decimal>();
+
+            CalcBudget calcBudget = new CalcBudget(budget);
+
+            foreach (Purse purse in budget.Purses)
+            {
+                decimal Total = calcBudget.BalancePurse(purse, DateTime.Now);
+                keyValues.Add(purse, Total);
+            }
+
+            return View(keyValues);
         }
     }
 }

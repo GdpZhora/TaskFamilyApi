@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace TaskFamilyWeb.Tests
 {
-    public class ControllerTests
+    public class TotodControllerTests
     {
         [Fact]
         public void IndexTodoTest()

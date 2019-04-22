@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ClassLibModel\TaskFamilyModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Budget\" />
-  </ItemGroup>
-
 </Project>

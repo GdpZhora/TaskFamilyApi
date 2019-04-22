@@ -1,0 +1,13 @@
+﻿@model IDictionary<Purse, decimal>
+
+<table>
+    <thead>
+        <tr><th>Имя кошелька</th> <th>Сумма</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var keyValue in Model)
+        {
+            <tr><td>@keyValue.Key.Description</td><td>@keyValue.Value</td></tr>
+        }
+    </tbody>
+</table>
