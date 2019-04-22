@@ -1,7 +1,7 @@
-﻿<div class="active">
-    <div>
+﻿<div class="active" id ="base">
+    <div name="finstate">
         <h1>Финансовое состояние</h1>
-        Наличные - <a href="/budget" class="navbar-brand">5000 р</a> <br />
+        Наличные - <a href="/budget" class="navbar-brand" name="cash"></a> <br />
         Зарплатная карта - <a href="/budget"> 2 952 р </a> <br />
     </div>
     <div>
@@ -18,3 +18,10 @@
         </ul>
     </div>
 </div>
+
+<script>
+    function GetFinState() {
+        $("a[name = 'cash']").append("0 руб");
+    }
+    GetFinState();
+</script>
