@@ -49,10 +49,11 @@ namespace TaskFamilyWeb
                defaults: new { Controller = "Todo", action = "List" });
 
                routes.MapRoute(
-               name: null,
+               name: "budget",
                template: "/budget",
                defaults: new { Controller = "Budget", action = "List" });
 
+               routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
            });
         }
     }

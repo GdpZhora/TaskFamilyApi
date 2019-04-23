@@ -10,17 +10,20 @@ namespace TaskFamilyWeb.Controllers
     public class BudgetController : Controller
     {
         private IBudget budget;
+        private CalcBudget calcBudget;
+
 
         public BudgetController(IBudget budgetOut)
         {
             budget = budgetOut;
+            calcBudget = new CalcBudget(budget);
         }
 
         public ViewResult List()
         {
             Dictionary<Purse, decimal> keyValues = new Dictionary<Purse, decimal>();
 
-            CalcBudget calcBudget = new CalcBudget(budget);
+             
 
             foreach (Purse purse in budget.Purses)
             {
@@ -29,6 +32,11 @@ namespace TaskFamilyWeb.Controllers
             }
 
             return View(keyValues);
+        }
+
+        public JsonResult JSTotal()
+        {
+            return Json(calcBudget.TotalBalance(DateTime.Now));
         }
     }
 }

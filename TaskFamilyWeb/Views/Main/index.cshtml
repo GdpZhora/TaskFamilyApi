@@ -1,8 +1,5 @@
 ﻿<div class="active" id ="base">
-    <div name="finstate">
-        <h1>Финансовое состояние</h1>
-        Наличные - <a href="/budget" class="navbar-brand" name="cash"></a> <br />
-        Зарплатная карта - <a href="/budget"> 2 952 р </a> <br />
+    <div id="finstate" class="accordion">
     </div>
     <div>
         <h1>Задачи</h1>
@@ -21,7 +18,17 @@
 
 <script>
     function GetFinState() {
-        $("a[name = 'cash']").append("0 руб");
+        $("div[id = 'finstate']").empty();
+        
+        $.ajax({
+            type: "GET",
+            url: "Budget/JSTotal",
+            cache: false,
+            success: function (total) {
+                $("div[id = 'finstate']").append($("<h1></h1>").text("Финансовое состояние " + total));
+            }
+        }
+        );
     }
     GetFinState();
 </script>
