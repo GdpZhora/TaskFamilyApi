@@ -1,9 +1,8 @@
-﻿<div class="active" id ="base">
-    <div id="finstate" class="accordion">
+﻿<div id ="base">
+    <div id="budget">
     </div>
-    <div>
-        <h1>Задачи</h1>
-        Текущие задачи в работе - <a href="/todo/work" class="navbar-brand">4</a> <br />
+    <div id="Todo" class="align-content-lg-around">
+        <h1 class="arrow">Задачи</h1>
         Новые задачи - <a href="/todo/new">3</a> <br />
         Всего невыполненных задач - <a href="/todo">7</a> <br />
     </div>
@@ -17,18 +16,8 @@
 </div>
 
 <script>
-    function GetFinState() {
-        $("div[id = 'finstate']").empty();
-        
-        $.ajax({
-            type: "GET",
-            url: "Budget/JSTotal",
-            cache: false,
-            success: function (total) {
-                $("div[id = 'finstate']").append($("<h1></h1>").text("Финансовое состояние " + total));
-            }
-        }
-        );
-    }
-    GetFinState();
+
+    GetBudgetStatus();
+    GetTodoStatus();
+
 </script>
