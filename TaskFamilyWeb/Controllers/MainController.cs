@@ -12,5 +12,15 @@ namespace TaskFamilyWeb.Controllers
         {
             return View();
         }
+
+        public JsonResult ListView()
+        {
+            Dictionary<string, string> valuePairs = new Dictionary<string, string>();
+
+            valuePairs.Add("Задачи", "todo");
+            valuePairs.Add("Бюджет", "budget");
+
+            return Json(valuePairs);
+        }
     }
 }
