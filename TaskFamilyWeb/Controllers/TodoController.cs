@@ -7,6 +7,7 @@ using TaskFamilyWeb.Models;
 
 namespace TaskFamilyWeb.Controllers
 {
+    [Route("api/[controller]")]
     public class TodoController : Controller
     {
         private ITodoRepository todo;
@@ -16,9 +17,18 @@ namespace TaskFamilyWeb.Controllers
             todo = repository;
         }
 
-        public ViewResult List()
+
+        [HttpGet]
+        public IActionResult List()
         {
-            return View(todo.ToDos);
+            return Ok(todo.ToDos);
         }
+
+        [HttpGet("current")]
+        public IActionResult Current()
+        {
+            return Ok(todo.ToDos);
+        }
+
     }
 }
