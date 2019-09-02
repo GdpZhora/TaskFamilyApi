@@ -2,8 +2,11 @@
 
 namespace TaskFamilyWeb.Models
 {
-    public class ToDo : BaseDoc
+    public class ToDo
     {
+        public int ToDoId { get; set; }
+        public bool Draft { get; set; }
+        public DateTime Date { get; set; }
         public string Description { get; set; }
         public DateTime DeadLine { get; set; }
         public bool Complete { get; set; }

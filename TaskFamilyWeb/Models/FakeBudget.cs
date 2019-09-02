@@ -13,9 +13,9 @@ namespace TaskFamilyWeb.Models
 
         public FakeBudget()
         {
-            cash = new Purse { Id = 1, Description = "Наличные деньги" };
-            salaryCard = new Purse { Id = 2, Description = "Зарплатная карта" };
-            creditCard = new Purse { Id = 3, Description = "Кредитная карта" };
+            cash = new Purse { PurseId = 1, Description = "Наличные деньги" };
+            salaryCard = new Purse { PurseId = 2, Description = "Зарплатная карта" };
+            creditCard = new Purse { PurseId = 3, Description = "Кредитная карта" };
         }
 
         public IEnumerable<Purse> Purses => new List<Purse>
@@ -32,9 +32,9 @@ namespace TaskFamilyWeb.Models
             get {
                 IEnumerable<MoveMoney> moves = new List<MoveMoney>
                 {
-                    new MoveMoney { PurseMoney = salaryCard, InMove = DirectMove.incoming, Total = 100000},
-                    new MoveMoney { PurseMoney = salaryCard, InMove = DirectMove.expense, Total = 50000},
-                    new MoveMoney { PurseMoney = cash, InMove = DirectMove.incoming, Total = 50000}
+                    new MoveMoney { Purse = salaryCard, InMove = DirectMove.incoming, Total = 100000},
+                    new MoveMoney { Purse = salaryCard, InMove = DirectMove.expense, Total = 50000},
+                    new MoveMoney { Purse = cash, InMove = DirectMove.incoming, Total = 50000}
                 };
                 return moves;
             }

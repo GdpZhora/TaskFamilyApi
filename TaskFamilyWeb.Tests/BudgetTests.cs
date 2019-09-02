@@ -13,9 +13,9 @@ namespace TaskFamilyWeb.Tests
         [Fact]
         public void FinancialStat()
         {
-            Purse purse1 = new Purse { Id = 1, Description = "Purse1" };
-            Purse purse2 = new Purse { Id = 2, Description = "Purse2" };
-            Purse purse3 = new Purse { Id = 3, Description = "Purse3" };
+            Purse purse1 = new Purse { PurseId = 1, Description = "Purse1" };
+            Purse purse2 = new Purse { PurseId = 2, Description = "Purse2" };
+            Purse purse3 = new Purse { PurseId = 3, Description = "Purse3" };
 
             Mock<IBudget> mock = new Mock<IBudget>();
             mock.Setup(m => m.Purses).Returns(new Purse[]{
@@ -27,11 +27,11 @@ namespace TaskFamilyWeb.Tests
             });
             mock.Setup(m => m.Moves).Returns(new MoveMoney[]
             {
-                new MoveMoney{Date = new DateTime(2019,1,1), PurseMoney = purse1, Total = 100000, InMove = DirectMove.incoming, Comment = "Приход на первый кошелек"},
-                new MoveMoney{Date = new DateTime(2019,1,2), PurseMoney = purse1, Total = 40000, InMove = DirectMove.expense, Comment = "Расход из первого кошелька"},
-                new MoveMoney{Date = new DateTime(2019,1,2), PurseMoney = purse2, Total = 40000, InMove = DirectMove.incoming, Comment = "Приход на второй кошелек"},
-                new MoveMoney{Date = new DateTime(2019,1,3), PurseMoney = purse2, Total = 20000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"},
-                new MoveMoney{Date = new DateTime(2019,1,3), PurseMoney = purse3, Total = 20000, InMove = DirectMove.incoming, Comment = "Приход на третий кошелек"}
+                new MoveMoney{Date = new DateTime(2019,1,1), Purse = purse1, Total = 100000, InMove = DirectMove.incoming, Comment = "Приход на первый кошелек"},
+                new MoveMoney{Date = new DateTime(2019,1,2), Purse = purse1, Total = 40000, InMove = DirectMove.expense, Comment = "Расход из первого кошелька"},
+                new MoveMoney{Date = new DateTime(2019,1,2), Purse = purse2, Total = 40000, InMove = DirectMove.incoming, Comment = "Приход на второй кошелек"},
+                new MoveMoney{Date = new DateTime(2019,1,3), Purse = purse2, Total = 20000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"},
+                new MoveMoney{Date = new DateTime(2019,1,3), Purse = purse3, Total = 20000, InMove = DirectMove.incoming, Comment = "Приход на третий кошелек"}
             });
 
             CalcBudget calcBudget = new CalcBudget(mock.Object);
@@ -45,9 +45,9 @@ namespace TaskFamilyWeb.Tests
         [Fact]
         public void BalanceParseTest()
         {
-            Purse purse1 = new Purse { Id = 1, Description = "Purse1" };
-            Purse purse2 = new Purse { Id = 2, Description = "Purse2" };
-            Purse purse3 = new Purse { Id = 3, Description = "Purse3" };
+            Purse purse1 = new Purse { PurseId = 1, Description = "Purse1" };
+            Purse purse2 = new Purse { PurseId = 2, Description = "Purse2" };
+            Purse purse3 = new Purse { PurseId = 3, Description = "Purse3" };
 
             Mock<IBudget> mock = new Mock<IBudget>();
             mock.Setup(m => m.Purses).Returns(new Purse[]{
@@ -59,12 +59,12 @@ namespace TaskFamilyWeb.Tests
             });
             mock.Setup(m => m.Moves).Returns(new MoveMoney[]
             {
-                new MoveMoney{Date = new DateTime(2019,1,1), PurseMoney = purse1, Total = 100000, InMove = DirectMove.incoming, Comment = "Приход на первый кошелек"},
-                new MoveMoney{Date = new DateTime(2019,1,2), PurseMoney = purse1, Total = 40000, InMove = DirectMove.expense, Comment = "Расход из первого кошелька"},
-                new MoveMoney{Date = new DateTime(2019,1,2), PurseMoney = purse2, Total = 40000, InMove = DirectMove.incoming, Comment = "Приход на второй кошелек"},
-                new MoveMoney{Date = new DateTime(2019,1,3), PurseMoney = purse2, Total = 20000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"},
-                new MoveMoney{Date = new DateTime(2019,1,3), PurseMoney = purse3, Total = 20000, InMove = DirectMove.incoming, Comment = "Приход на третий кошелек"},
-                new MoveMoney{Date = new DateTime(2019,1,4), PurseMoney = purse3, Total = 10000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"}
+                new MoveMoney{Date = new DateTime(2019,1,1), Purse = purse1, Total = 100000, InMove = DirectMove.incoming, Comment = "Приход на первый кошелек"},
+                new MoveMoney{Date = new DateTime(2019,1,2), Purse = purse1, Total = 40000, InMove = DirectMove.expense, Comment = "Расход из первого кошелька"},
+                new MoveMoney{Date = new DateTime(2019,1,2), Purse = purse2, Total = 40000, InMove = DirectMove.incoming, Comment = "Приход на второй кошелек"},
+                new MoveMoney{Date = new DateTime(2019,1,3), Purse = purse2, Total = 20000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"},
+                new MoveMoney{Date = new DateTime(2019,1,3), Purse = purse3, Total = 20000, InMove = DirectMove.incoming, Comment = "Приход на третий кошелек"},
+                new MoveMoney{Date = new DateTime(2019,1,4), Purse = purse3, Total = 10000, InMove = DirectMove.expense, Comment = "Расход из второго кошелька"}
             });
 
             CalcBudget calcBudget = new CalcBudget(mock.Object);

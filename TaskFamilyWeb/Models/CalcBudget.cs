@@ -22,7 +22,7 @@ namespace TaskFamilyWeb.Models
 
         public decimal BalancePurse(Purse purse, DateTime dateTime )
         {
-            decimal Sum = budget.Moves.Sum(m => m.PurseMoney == purse && m.Date <= dateTime ? m.Total : 0);
+            decimal Sum = budget.Moves.Sum(m => m.Purse == purse && m.Date <= dateTime ? m.Total : 0);
             return Sum;
         }
     }
