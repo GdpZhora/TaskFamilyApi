@@ -45,6 +45,24 @@ namespace TaskFamilyWeb.Models
             }
 
         }
+
+        public IEnumerable<Currency> Currencies => throw new NotImplementedException();
+
+        public void ExpenseFromPurse(Purse purse, decimal sum, string comment = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IncomeToPurse(Purse purse, decimal sum, string comment = "")
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ReplaceFromPurseToPurse(Purse purseFrom, Purse purseTo, decimal sum, string comment = "")
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveMoveMoney(Purse purse, DirectMove move, decimal sum, string comment = "")
         {
             throw new NotImplementedException();

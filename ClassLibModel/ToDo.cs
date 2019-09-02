@@ -8,6 +8,8 @@ namespace TaskFamilyWeb.Models
         public bool Draft { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
+        public int FamilyId { get; set; }
+        public virtual Family Family { get; set; }
         public DateTime DeadLine { get; set; }
         public bool Complete { get; set; }
         public DateTime FactDate { get; set; }

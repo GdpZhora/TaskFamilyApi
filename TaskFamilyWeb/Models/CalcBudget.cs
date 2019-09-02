@@ -16,13 +16,27 @@ namespace TaskFamilyWeb.Models
 
         public decimal TotalBalance(DateTime dateTime)
         {
-            decimal Total = budget.Moves.Sum(m => m.Total);
+            decimal Total = budget.Moves.Sum(m =>
+            {
+                if (m.InMove == DirectMove.expense)
+                    return (-1) * m.Total;
+                else return m.Total;
+            });
             return Total;
         }
 
         public decimal BalancePurse(Purse purse, DateTime dateTime )
         {
-            decimal Sum = budget.Moves.Sum(m => m.Purse == purse && m.Date <= dateTime ? m.Total : 0);
+            decimal Sum = budget.Moves.Sum(m =>
+            {
+                if (m.Purse == purse && m.Date <= dateTime)
+                {
+                    if (m.InMove == DirectMove.expense)
+                        return (-1) * m.Total;
+                    else return m.Total; }
+                else { return 0; }
+            }
+            );
             return Sum;
         }
     }
