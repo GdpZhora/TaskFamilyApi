@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskFamilyWeb.Models
 {
@@ -6,7 +8,8 @@ namespace TaskFamilyWeb.Models
     {
         public static void EnsurePopulare(ApplicationDbContext context)
         {
-            if(!context.Currencies.Any<Currency>())
+            context.Database.Migrate();
+            if (!context.Currencies.Any())
             {
                 context.Currencies.AddRange(
                     new Currency

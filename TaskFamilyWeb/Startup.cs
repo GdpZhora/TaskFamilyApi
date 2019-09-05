@@ -40,15 +40,13 @@ namespace TaskFamilyWeb
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            dbContext.Database.EnsureCreated();
-            SeekData.EnsurePopulare(dbContext);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
@@ -69,6 +67,7 @@ namespace TaskFamilyWeb
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            SeekData.EnsurePopulare(context);
 
             /* app.UseMvc(routes =>
             {
