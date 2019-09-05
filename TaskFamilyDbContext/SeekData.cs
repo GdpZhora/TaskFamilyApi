@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using System;
+using MySql.Data.EntityFrameworkCore;
 
 namespace TaskFamilyWeb.Models
 {
@@ -8,16 +10,37 @@ namespace TaskFamilyWeb.Models
     {
         public static void EnsurePopulare(ApplicationDbContext context)
         {
+            bool isNotNull = false;
             context.Database.Migrate();
-            if (!context.Currencies.Any())
+            try
             {
+                 isNotNull = context.Currencies.Count<Currency>() > 0;
+            }
+            catch(Exception ex)
+            {
+                int a = 10;
+            };
+
+
+
+            if (!isNotNull)
+            {
+                Currency ruble = new Currency
+                {
+                    Description = "Российский рубль",
+                    DigitalCode = "643",
+                    CharacterCode = "руб."
+                };
+
+                Family family = new Family
+                {
+                    Currency = ruble,
+                    Description = "Test Family"
+                };
+
+
                 context.Currencies.AddRange(
-                    new Currency
-                    {
-                        Description = "Российский рубль",
-                        DigitalCode = "643",
-                        CharacterCode = "руб."
-                    },
+                    ruble,
                     new Currency
                     {
                         Description = "Доллар США",
@@ -35,6 +58,8 @@ namespace TaskFamilyWeb.Models
 
                 Purse PurseCash = new Purse
                 {
+                    Currency = ruble,
+                    Family = family,
                     Description = "Cash"
 
                 };
@@ -57,8 +82,8 @@ namespace TaskFamilyWeb.Models
 
 
                     );
-                
-             
+
+                context.SaveChanges();
 
             }
         }

@@ -9,8 +9,8 @@ using TaskFamilyWeb.Models;
 namespace TaskFamilyWeb.Models.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190902211209_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190905180937_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,11 +29,31 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.Property<string>("DigitalCode");
 
-                    b.Property<bool>("MarkRemoval");
+                    b.Property<short>("MarkRemoval")
+                        .HasColumnType("bit(1)");
 
                     b.HasKey("CurrencyId");
 
-                    b.ToTable("Currencies");
+                    b.ToTable("currencies");
+                });
+
+            modelBuilder.Entity("TaskFamilyWeb.Models.CurrencyRates", b =>
+                {
+                    b.Property<int>("BaseCurrencyId");
+
+                    b.Property<int>("CurrencyId");
+
+                    b.Property<DateTime>("Period");
+
+                    b.Property<int>("Multiplicity");
+
+                    b.Property<decimal>("Rate");
+
+                    b.HasKey("BaseCurrencyId", "CurrencyId", "Period");
+
+                    b.HasIndex("CurrencyId");
+
+                    b.ToTable("CurrencyRates");
                 });
 
             modelBuilder.Entity("TaskFamilyWeb.Models.Event", b =>
@@ -47,7 +67,8 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.Property<int>("FamilyId");
 
-                    b.Property<bool>("MarkRemoval");
+                    b.Property<short>("MarkRemoval")
+                        .HasColumnType("bit(1)");
 
                     b.Property<int>("Periodicity");
 
@@ -55,7 +76,7 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.HasIndex("FamilyId");
 
-                    b.ToTable("Events");
+                    b.ToTable("events");
                 });
 
             modelBuilder.Entity("TaskFamilyWeb.Models.Family", b =>
@@ -107,11 +128,13 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<bool>("Draft");
+                    b.Property<short>("Draft")
+                        .HasColumnType("bit(1)");
 
                     b.Property<int>("FamilyId");
 
-                    b.Property<bool>("MarkRemoval");
+                    b.Property<short>("MarkRemoval")
+                        .HasColumnType("bit(1)");
 
                     b.HasKey("PurseId");
 
@@ -119,7 +142,7 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.HasIndex("FamilyId");
 
-                    b.ToTable("Purses");
+                    b.ToTable("purses");
                 });
 
             modelBuilder.Entity("TaskFamilyWeb.Models.ToDo", b =>
@@ -129,7 +152,8 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.Property<string>("Comment");
 
-                    b.Property<bool>("Complete");
+                    b.Property<short>("Complete")
+                        .HasColumnType("bit(1)");
 
                     b.Property<DateTime>("Date");
 
@@ -139,7 +163,8 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.Property<string>("Detail");
 
-                    b.Property<bool>("Draft");
+                    b.Property<short>("Draft")
+                        .HasColumnType("bit(1)");
 
                     b.Property<DateTime>("FactDate");
 
@@ -151,7 +176,20 @@ namespace TaskFamilyWeb.Models.Migrations
 
                     b.HasIndex("FamilyId");
 
-                    b.ToTable("ToDos");
+                    b.ToTable("todos");
+                });
+
+            modelBuilder.Entity("TaskFamilyWeb.Models.CurrencyRates", b =>
+                {
+                    b.HasOne("TaskFamilyWeb.Models.Currency", "BaseCurrency")
+                        .WithMany()
+                        .HasForeignKey("BaseCurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("TaskFamilyWeb.Models.Currency", "Currency")
+                        .WithMany()
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("TaskFamilyWeb.Models.Event", b =>
