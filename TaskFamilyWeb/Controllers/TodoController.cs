@@ -4,13 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TaskFamilyWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace TaskFamilyWeb.Controllers
 {
     [Route("api/[controller]")]
-    public class TodoController : Controller
+    [ApiController]
+    public class TodoController : ControllerBase
     {
-        private ITodoRepository todo;
+        private readonly ITodoRepository todo;
 
         public TodoController(ITodoRepository repository)
         {
@@ -19,9 +21,9 @@ namespace TaskFamilyWeb.Controllers
 
 
         [HttpGet]
-        public IActionResult List()
+        public IEnumerable<ToDo> List()
         {
-            return Ok(todo.ToDos);
+            return todo.ToDos;
         }
 
         [HttpGet("current")]

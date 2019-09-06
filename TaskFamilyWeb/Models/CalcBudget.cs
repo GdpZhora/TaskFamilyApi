@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TaskFamilyWeb.Models;
+     
 
 namespace TaskFamilyWeb.Models
 {
@@ -38,6 +40,25 @@ namespace TaskFamilyWeb.Models
             }
             );
             return Sum;
+        }
+
+        public IEnumerable<PurseBalance> PursesBalances(DateTime dateTime)
+        {
+            List<PurseBalance> purseBalances = new List<PurseBalance>();
+
+
+            foreach (Purse purse in budget.Purses)
+            {
+                purseBalances.Add(
+                    new PurseBalance
+                    {
+                        PurseId = purse.PurseId,
+                        PurseDescription = purse.Description,
+                        Balance = BalancePurse(purse, dateTime)
+                    }) ;
+            }
+                
+            return purseBalances;
         }
     }
 }

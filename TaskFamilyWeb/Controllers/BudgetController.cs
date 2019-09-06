@@ -7,6 +7,8 @@ using TaskFamilyWeb.Models;
 
 namespace TaskFamilyWeb.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class BudgetController : Controller
     {
         private IBudget budget;
@@ -19,7 +21,7 @@ namespace TaskFamilyWeb.Controllers
             calcBudget = new CalcBudget(budget);
         }
 
-        public ViewResult List()
+        public ViewResult ListTotal()
         {
             Dictionary<Purse, decimal> keyValues = new Dictionary<Purse, decimal>();
 
@@ -38,5 +40,12 @@ namespace TaskFamilyWeb.Controllers
         {
             return Json(calcBudget.TotalBalance(DateTime.Now));
         }
+
+        [HttpGet]
+        public IEnumerable<PurseBalance> List()
+        {
+            return calcBudget.PursesBalances(DateTime.Now);
+        }
+
     }
 }

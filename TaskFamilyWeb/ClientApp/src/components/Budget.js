@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-export class Todo extends Component {
-    static displayName = Todo.name;
+export class Budget extends Component {
+    static displayName = Budget.name;
 
   constructor (props) {
     super(props);
     this.state = { forecasts: [], loading: true };
     
-      fetch('api/Todo')
+      fetch('api/Budget')
           .then(response => response.json())
           .then(data => {
               this.setState({ forecasts: data, loading: false });
@@ -20,18 +20,14 @@ export class Todo extends Component {
                 <thead>
                     <tr>
                         <th>Description</th>
-                        <th>Detail</th>
-                        <th>Dead line</th>
-                        <th>Done</th>
+                        <th>Balance</th>
                     </tr>
                 </thead>
                 <tbody>
                     {forecasts.map(forecast =>
-                        <tr key={forecast.id}>
-                            <td>{forecast.description}</td>
-                            <td>{forecast.detail}</td>
-                            <td>{forecast.deadLine}</td>
-                            <td>{forecast.complete}</td>
+                        <tr key={forecast.purseId}>
+                            <td>{forecast.purseDescription}</td>
+                            <td>{forecast.balance}</td>
                         </tr>
                     )}
                 </tbody>
@@ -44,10 +40,10 @@ export class Todo extends Component {
   render () {
       let contents = this.state.loading
           ? <p><em>Loading...</em></p>
-          : Todo.renderTodoTable(this.state.forecasts)
+          : Budget.renderTodoTable(this.state.forecasts)
     return (
         <div>
-            <h1>Current Todos</h1>
+            <h1>Current Finance</h1>
             <p></p>
             {contents}
         </div>

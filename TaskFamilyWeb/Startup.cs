@@ -28,8 +28,8 @@ namespace TaskFamilyWeb
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ITodoRepository, FakeTodoRepository>();
-            services.AddTransient<IBudget, FakeBudget>();
+            services.AddTransient<ITodoRepository, EFTodo>();
+            services.AddTransient<IBudget, EFBudget>();
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseMySQL(Configuration["Data:TaskFamilyApi:ConnectionString"]));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
@@ -68,31 +68,6 @@ namespace TaskFamilyWeb
                 }
             });
             SeekData.EnsurePopulare(context);
-
-            /* app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                name: null,
-                template: "",
-                defaults: new { Controller = "Main", action = "index" });
-
-                routes.MapRoute(
-                name: null,
-                template: "/index",
-                defaults: new { Controller = "Main", action = "index" });
-
-                routes.MapRoute(
-                name: null,
-                template: "/todo",
-                defaults: new { Controller = "Todo", action = "List" });
-
-                routes.MapRoute(
-                name: "budget",
-                template: "/budget",
-                defaults: new { Controller = "Budget", action = "List" });
-
-                routes.MapRoute(name: null, template: "{controller}/{action}/{id?}");
-            });*/
         }
     }
 }
