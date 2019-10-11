@@ -7,13 +7,18 @@ namespace TaskFamilyWeb.Models
 {
     public class FakeTodoRepository : ITodoRepository
     {
-        public IEnumerable<ToDo> ToDos => new List<ToDo>
-        {
-            new ToDo{ToDoId =1, Description = "Релизовать вывод всех задач"},
-            new ToDo{ToDoId =2, Description = "Подключить Bootstrap библиотеки к страничке"},
-            new ToDo{ToDoId =3, Description = "Доработать контроллер на изменение задач"}
+        public IEnumerable<ToDo> ToDos { get; }
 
-        };
+        public FakeTodoRepository()
+        {
+           ToDos =  new List<ToDo>
+            {
+                new ToDo{ToDoId =1, Description = "Релизовать вывод всех задач"},
+                new ToDo{ToDoId =2, Description = "Подключить Bootstrap библиотеки к страничке"},
+                new ToDo{ToDoId =3, Description = "Доработать контроллер на изменение задач"}
+
+            };
+        }
 
     }
 }

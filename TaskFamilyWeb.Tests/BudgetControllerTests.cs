@@ -93,11 +93,11 @@ namespace TaskFamilyWeb.Tests
 
             foreach (var KeyValue in result)
             {
-                if (KeyValue.Purse == purse1)
+                if (KeyValue.PurseId == purse1.PurseId)
                     balancePurse1 = KeyValue.Balance;
-                if (KeyValue.Purse == purse2)
+                if (KeyValue.PurseId == purse2.PurseId)
                     balancePurse2 = KeyValue.Balance;
-                if (KeyValue.Purse == purse3)
+                if (KeyValue.PurseId == purse3.PurseId)
                     balancePurse3 = KeyValue.Balance;
             }
 

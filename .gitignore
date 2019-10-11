@@ -263,3 +263,7 @@ __pycache__/
 appsettings.*
 
 TaskFamilyWeb/wwwroot/lib/
+
+.scannerwork
+check.bat
+sonar-project.properties
