@@ -7,7 +7,7 @@ namespace TaskFamilyWeb.Models
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> contextOptions) : base(contextOptions)
         {
-            //Database.EnsureCreated();
+           Database.EnsureCreated();
         }
 
         public DbSet<Family> Families { get; set; }

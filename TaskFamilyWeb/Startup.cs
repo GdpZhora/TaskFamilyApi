@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+//using MySql.Data.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql;
 
 namespace TaskFamilyWeb
 {
@@ -28,10 +30,10 @@ namespace TaskFamilyWeb
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ITodoRepository, FakeTodoRepository>();
-            services.AddTransient<IBudget, FakeBudget>();
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseMySQL(Configuration["Data:TaskFamilyApi:ConnectionString"]));
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddTransient<ITodoRepository, EFTodo>();
+            services.AddTransient<IBudget, EFBudget>();
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseMySql(Configuration["Data:TaskFamilyApi:ConnectionString"]));
+            services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddSpaStaticFiles(configuration =>
             {
@@ -40,7 +42,7 @@ namespace TaskFamilyWeb
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ApplicationDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -67,7 +69,7 @@ namespace TaskFamilyWeb
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
-            //SeekData.EnsurePopulare(context);
+            SeekData.EnsurePopulare(context);
         }
     }
 }

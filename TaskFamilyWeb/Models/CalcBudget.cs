@@ -29,7 +29,7 @@ namespace TaskFamilyWeb.Models
 
         public decimal BalancePurse(Purse purse, DateTime dateTime )
         {
-            decimal Sum = budget.Moves.Sum(m =>
+            /*decimal Sum = budget.Moves.Sum(m =>
             {
                 if (m.Purse == purse && m.Date <= dateTime)
                 {
@@ -38,7 +38,15 @@ namespace TaskFamilyWeb.Models
                     else return m.Total; }
                 else { return 0; }
             }
-            );
+            );*/
+            decimal Sum = budget.Moves.Select(m => m)
+                                        .Where(m => (m.Purse == purse && m.Date <= dateTime))
+                                        .Sum(m =>
+                                        {
+                                            if (m.InMove == DirectMove.expense)
+                                                return (-1) * m.Total;
+                                            else return m.Total;
+                                        });
             return Sum;
         }
 

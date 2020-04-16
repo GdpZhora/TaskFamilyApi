@@ -11,14 +11,22 @@ namespace TaskFamilyWeb.Models
         public static void EnsurePopulare(ApplicationDbContext context)
         {
             bool isNotNull = false;
-            context.Database.Migrate();
             try
             {
-                 isNotNull = context.Currencies.Count<Currency>() > 0;
+                context.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                //int a = 10;
+            };
+            try
+            {
+                
+                isNotNull = context.Currencies.Count<Currency>() > 0;
             }
             catch(Exception ex)
             {
-                int a = 10;
+                //int a = 10;
             };
 
 

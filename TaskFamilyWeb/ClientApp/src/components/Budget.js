@@ -51,8 +51,8 @@ export class Budget extends React.Component
                        <Form.Group controlId="formPurse">
                            <Form.Label>Purse</Form.Label>
                            <Form.Control as="select">
-                               <option>1</option>
-                               <option>2</option>
+                               <option value="1">Наличка</option>
+                               <option value="2">Зарплатная карта</option>
                                <option>3</option>
                                <option>4</option>
                                <option>5</option>
