@@ -30,8 +30,8 @@ namespace TaskFamilyWeb
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<ITodoRepository, EFTodo>();
-            services.AddTransient<IBudget, EFBudget>();
+            services.AddTransient<ITodoRepository, FakeTodoRepository>();
+            services.AddTransient<IBudget, FakeBudget>();
             services.AddDbContext<ApplicationDbContext>(opt => opt.UseMySql(Configuration["Data:TaskFamilyApi:ConnectionString"]));
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 

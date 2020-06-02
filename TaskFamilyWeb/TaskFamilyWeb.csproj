@@ -11,6 +11,7 @@
     <UserSecretsId>be01050f-8d0c-43eb-9636-17b4f87c746a</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <StartupObject></StartupObject>
+    <OutputType>Exe</OutputType>
 
   </PropertyGroup>
 
