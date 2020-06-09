@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibModel\TaskFamilyModels.csproj" />
-    <ProjectReference Include="..\TaskFamilyWeb\TaskFamilyWeb.csproj" />
+    <ProjectReference Include="..\TaskFamilyApi\TaskFamilyApi.csproj" />
   </ItemGroup>
 
 </Project>
